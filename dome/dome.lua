@@ -7,6 +7,11 @@ function nextSlot()
     while robot.count() < 1
     do
         activeSlot = activeSlot + 1
+        if activeSlot > robot.inventorySize()
+        then
+            print('no more blocks left')
+            os.exit()
+        end
         previousSlot = robot.select(activeSlot)
     end
 end
