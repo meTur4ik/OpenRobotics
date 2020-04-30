@@ -74,22 +74,22 @@ function squareSurface(length, clockwise)
     -- length: number
     -- clockwise: boolean
 
-    for i = 1, length, 1
+    for i = 0, length, 1
     do
         line(length)
-        if i % 2 == 0
+        if i % 2 == 1
         then
-            corner(not clockwise)
-        else
             if i < length
             then
-                corner(clockwise)
+                corner(not clockwise)
             end
+        else
+            corner(clockwise)
         end
     end
 
     if length % 2 == 1
-    do
+    then
         robot.turnAround()
         line(length)
     end
