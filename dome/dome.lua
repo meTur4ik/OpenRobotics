@@ -120,3 +120,5 @@ function main()
     --squarePerimeter(5, true)
 end
 
+main()
+
