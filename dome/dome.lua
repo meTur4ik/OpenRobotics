@@ -3,6 +3,7 @@ local robot = require('robot')
 local previousSlot = 1
 local activeSlot = 1
 
+
 function nextSlot()
     while robot.count() < 1
     do
@@ -18,6 +19,8 @@ end
 
 
 function line(length)
+    -- length: number
+
     for i = 1, length, 1
     do
         robot.swing()
@@ -33,6 +36,23 @@ function line(length)
     end
 end
 
+
+function squarePerimeter(length, clockwise)
+    -- length: number
+    -- clockwise: boolean
+
+    for i = 1, 4, 1
+    do
+        line(length)
+        if clockwise
+        then
+            robot.turnRight()
+        else
+            robot.turnLeft()
+        end
+    end
+end
+
 -- precondition
 
 robot.select(activeSlot)
@@ -45,4 +65,4 @@ end
 -- precondition end
 
 -- main
-line(5)
+squarePerimeter(5, true)
