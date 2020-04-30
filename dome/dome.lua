@@ -15,18 +15,16 @@ end
 -- precondition end
 
 function nextSlot()
-    if robot.count() > 0
-    then
-       return nil
+    while robot.count() < 1
+    do
+        activeSlot = activeSlot + 1
+        previousSlot = robot.select(activeSlot)
     end
-
-    activeSlot = activeSlot + 1
-    previousSlot = robot.select(activeSlot)
 end
 
 
 function line(length: number)
-    for i = 0, length, 1
+    for i = 1, length, 1
     do
         robot.swing()
         robot.forward()
