@@ -3,17 +3,6 @@ local robot = require('robot')
 local previousSlot = 1
 local activeSlot = 1
 
--- precondition
-
-robot.select(activeSlot)
-
-while robot.count() < 1
-do
-    nextSlot()
-end
-
--- precondition end
-
 function nextSlot()
     while robot.count() < 1
     do
@@ -23,7 +12,7 @@ function nextSlot()
 end
 
 
-function line(length)
+function line(lengthed)
     for i = 1, length, 1
     do
         robot.swing()
@@ -38,6 +27,17 @@ function line(length)
         nextSlot()
     end
 end
+
+-- precondition
+
+robot.select(activeSlot)
+
+while robot.count() < 1
+do
+    nextSlot()
+end
+
+-- precondition end
 
 -- main
 line(5)
