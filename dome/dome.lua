@@ -12,7 +12,7 @@ function nextSlot()
 end
 
 
-function line(lengthed)
+function line(length)
     for i = 1, length, 1
     do
         robot.swing()
