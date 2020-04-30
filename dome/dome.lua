@@ -27,7 +27,13 @@ function line(length: number)
     for i = 1, length, 1
     do
         robot.swing()
-        robot.forward()
+        local moved, reason = robot.forward()
+        while not moved
+        do
+            os.sleep(2)
+            robot.swing()
+            moved, reason = robot.forward()
+        end
         local placed, _ = robot.placeDown()
         nextSlot()
     end
