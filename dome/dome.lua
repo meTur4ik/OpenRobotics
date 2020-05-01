@@ -108,6 +108,18 @@ function squareSurface(length, clockwise)
 end
 
 
+function cube(length, clockwise)
+    -- length: number
+    -- clockwise: boolean
+    
+    for i=1,length, 1
+    do
+        squareSurface(length, clockwise)
+        robot.up()
+    end
+end
+
+
 -- precondition
 
 function precondition()
