@@ -61,7 +61,7 @@ end
 
 function corner(clockwise)
     turn(clockwise)
-    line(1)
+    line(2)
     turn(clockwise)
 end
 
@@ -80,27 +80,33 @@ end
 function squareSurface(length, clockwise)
     -- length: number
     -- clockwise: boolean
+    local cycles = length - 1
 
-    for i = 0, length, 1
+    for i = 0, cycles, 1
     do
         line(length)
         if i % 2 == 1
         then
-            if i < length
+            if i < cycles
             then
                 corner(not clockwise)
             end
         else
-            corner(clockwise)
+            if i < cycles
+            then
+                corner(clockwise)
         end
     end
 
     if length % 2 == 1
     then
         robot.turnAround()
+    else
         line(length)
+        robot.turnAround()
     end
-    
+
+    line(length)
     turn(clockwise)
     line(length)
     turn(clockwise)
