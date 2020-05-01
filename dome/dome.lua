@@ -85,28 +85,23 @@ function squareSurface(length, clockwise)
     for i = 0, cycles, 1
     do
         line(length)
-        if i % 2 == 1
+        if i < cycles
         then
-            if i < cycles
+            if i % 2 == 1
             then
                 corner(not clockwise)
-            end
-        else
-            if i < cycles
-            then
+            else
                 corner(clockwise)
+            end
         end
     end
 
     if length % 2 == 1
     then
         robot.turnAround()
-    else
         line(length)
-        robot.turnAround()
     end
 
-    line(length)
     turn(clockwise)
     line(length)
     turn(clockwise)
