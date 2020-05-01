@@ -18,10 +18,18 @@ function nextSlot()
 end
 
 
+function dot()
+    nextSlot()
+    robot.placeDown()
+end
+
+
 function line(length)
     -- length: number
 
-    for i = 1, length, 1
+    dot()
+
+    for i = 1, length - 1, 1
     do
         robot.swing()
         local moved, reason = robot.forward()
@@ -31,8 +39,7 @@ function line(length)
             robot.swing()
             moved, reason = robot.forward()
         end
-        local placed, _ = robot.placeDown()
-        nextSlot()
+        dot()
     end
 end
 
