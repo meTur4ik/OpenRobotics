@@ -7,3 +7,10 @@ oppm install dome
 ``` 
 
 then copy it to floppy disk, insert into robot and run
+
+### Hardware Requirements
+
+- generator
+- inventory upgrade
+- floppy drive
+- pickaxe (depends on where you want to build)

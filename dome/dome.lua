@@ -1,7 +1,23 @@
 local robot = require('robot')
+local computer = require('computer')
+local component = require('component')
+local gen = component.generator
 
-local previousSlot = 1
-local activeSlot = 1
+local previousSlot = 2
+local activeSlot = 2
+local fuelSlot = 1
+local fuelAmount = 1
+
+
+function refill()
+    local energyLevel = computer.energy() / computer.maxEnergy() * 100
+    if energy < 80
+    then
+        previousSlot = robot.select(fuelSlot)
+        gen.insert(fuelAmount)
+        previousSlot = robot.select(previousSlot)
+    end
+end
 
 
 function nextSlot()
@@ -19,6 +35,7 @@ end
 
 
 function dot()
+    refill()
     nextSlot()
     robot.placeDown()
 end
@@ -111,11 +128,19 @@ end
 function cube(length, clockwise)
     -- length: number
     -- clockwise: boolean
-    
+
     for i=1,length, 1
     do
         squareSurface(length, clockwise)
-        robot.up()
+        robot.swingUp()
+        local moved, reason = robot.up()
+
+        while not moved
+        do
+            os.sleep(2)
+            robot.swingUp()
+            moved, reason = robot.up()
+        end
     end
 end
 
