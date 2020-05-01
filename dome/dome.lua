@@ -6,16 +6,17 @@ local gen = component.generator
 local previousSlot = 2
 local activeSlot = 2
 local fuelSlot = 1
-local fuelAmount = 1
+local fuelAmount = 5
 
 
 function refill()
     local energyLevel = computer.energy() / computer.maxEnergy() * 100
-    if energyLevel < 80 and gen.count() > 0
+    if energyLevel < 80 and gen.count() < 1
     then
         previousSlot = robot.select(fuelSlot)
         gen.insert(fuelAmount)
-        previousSlot = robot.select(previousSlot)
+        previousSlot = robot.select(activeSlot)
+        os.sleep(1)
     end
 end
 
