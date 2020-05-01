@@ -11,7 +11,7 @@ local fuelAmount = 1
 
 function refill()
     local energyLevel = computer.energy() / computer.maxEnergy() * 100
-    if energy < 80
+    if energyLevel < 80 and gen.count() > 0
     then
         previousSlot = robot.select(fuelSlot)
         gen.insert(fuelAmount)
