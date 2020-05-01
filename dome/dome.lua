@@ -162,7 +162,8 @@ end
 
 function main()
     precondition()
-    squareSurface(5, true)
+    cube(5, true)
+    --squareSurface(5, true)
     --squarePerimeter(5, true)
 end
 
