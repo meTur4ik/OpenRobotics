@@ -1,5 +1,6 @@
 local robot = require('robot')
 local computer = require('computer')
+local math = require('math')
 local component = require('component')
 local gen = component.generator
 
@@ -47,7 +48,7 @@ function line(length)
 
     dot()
 
-    for i = 1, length - 1, 1
+    for i = 1, length - 1
     do
         robot.swing()
         local moved, reason = robot.forward()
@@ -95,12 +96,14 @@ function squarePerimeter(length, clockwise)
 end
 
 
-function squareSurface(length, clockwise)
-    -- length: number
+function rectangularSurface(length, width, clockwise)
+    -- width: number, right/left from robot current facing
+    -- length: number, forward from robot current facing
     -- clockwise: boolean
-    local cycles = length - 1
 
-    for i = 0, cycles, 1
+    local cycles = width - 1
+
+    for i = 0, cycles
     do
         line(length)
         if i < cycles
@@ -121,18 +124,20 @@ function squareSurface(length, clockwise)
     end
 
     turn(clockwise)
-    line(length)
+    line(width)
     turn(clockwise)
 end
 
 
-function cube(length, clockwise)
-    -- length: number
+function brick(length, width, heigth, clockwise)
+    -- width: number, right/left from robot current facing
+    -- length: number, forward from robot current facing
+    -- heigth: number
     -- clockwise: boolean
 
-    for i=1,length, 1
+    for i = 1, heigth
     do
-        squareSurface(length, clockwise)
+        rectangularSurface(length, width, clockwise)
         robot.swingUp()
         local moved, reason = robot.up()
 
@@ -158,12 +163,27 @@ function precondition()
 end
 
 
+function moveToStartingPoint(width, clockwise)
+    -- width: number
+    line(2)
+    turn(not clockwise)
+    local blocksTilStart = math.floor(width / 2) + 1
+    line(blocksTilStart)
+    turn(clockwise)
+end
+
+
 -- main
 
 function main()
     precondition()
-    cube(5, true)
-    --squareSurface(5, true)
+    local length = 19
+    local width = 45
+    local heigth = 9
+    local clockwise = true
+    moveToStartingPoint(width, clockwise)
+    brick(length, width, heigth, clockwise)
+    --rectangularSurface(5, true)
     --squarePerimeter(5, true)
 end
 
