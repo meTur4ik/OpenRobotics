@@ -24,16 +24,15 @@ end
 local cr = meController.getCraftables()
 local craftOp = nil
 
-if args[1]
+if args[1] and args[2]
 then
     local num = tonumber(args[1])
-    craftOp = cr[num].request(1)
+    local amount = tonumber(args[2])
+    craftOp = cr[num].request(amount)
 else
-    if args[1] and args[2]
+    if args[1]
     then
-        local num = tonumber(args[1])
-        local amount = tonumber(args[2])
-        craftOp = cr[num].request(amount)
+        craftOp = cr[num].request(1)
     end
 end
 
