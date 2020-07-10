@@ -18,15 +18,22 @@ then
     do
         print(i, cr[i].getItemStack().label)
     end
+    os.exit()
 end
 
 local cr = meController.getCraftables()
 local craftOp = nil
+
 if args[1]
 then
-    craftOp = cr[args[1]].request(1)
-else if args[1] and args[2]
+    local num = tonumber(args[1])
+    craftOp = cr[num].request(1)
+end
+
+if args[1] and args[2]
 then
+    local num = tonumber(args[1])
+    local amount = tonumber(args[2])
     craftOp = cr[args[1].request(args[2])]
 end
 
