@@ -28,15 +28,13 @@ if args[1]
 then
     local num = tonumber(args[1])
     craftOp = cr[num].request(1)
-    wait(craftOp)
-    os.exit()
 else
     if args[1] and args[2]
     then
         local num = tonumber(args[1])
         local amount = tonumber(args[2])
         craftOp = cr[num].request(amount)
-        wait(craftOp)
-        os.exit()
     end
 end
+
+wait(craftOp)
