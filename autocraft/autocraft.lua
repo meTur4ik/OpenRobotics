@@ -6,6 +6,7 @@ function wait(operation)
     while not operation.isDone() do
         if operation.isCanceled() then
             print('not enough resources')
+            os.exit(1)
         end
     end
     print('done')
