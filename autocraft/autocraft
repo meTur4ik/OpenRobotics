@@ -1,0 +1,26 @@
+NAME
+  autocraft - script for craft requesting.
+
+SYNOPSIS
+  autocraft
+  autocraft [ITEM]
+  autocraft [ITEM] [AMOUNT]
+
+DESCRIPTION
+  If no parameters are passed - prints list of available crafts.
+  If ITEM parameter is passed - crafts ITEM with recipe one time.
+  If ITEM and AMOUNT parameters are passed - crafts at least AMOUNT
+of ITEM.
+  Shows warning if craft was cancelled
+
+EXAMPLES
+  assuming, planks craft present
+[In 1]> # autocraft
+[Out 1]> 1   planks
+
+[In 2]> # autocraft 1
+[Out 2]> done
+
+  this will craft planks 6 times (like at least 21)
+[In 3]> # autocraft 1 21
+[Out 3]> done
