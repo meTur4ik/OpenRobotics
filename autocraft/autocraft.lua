@@ -4,7 +4,7 @@ local shell = require('shell')
 
 function wait(operation)
     while not operation.isDone() do
-        if operation.isCancelled() then
+        if operation.isCanceled() then
             print('not enough resources')
         end
     end
