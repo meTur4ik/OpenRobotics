@@ -2,7 +2,7 @@
 #### A repo for OpenComputers mod
 
 
-#### Disclaimer: everything in the repo was initially running  on minecraft 1.7.10. and OpenComputers 1.7.5. It may be that something would break or get deprecated/obsolete in older versions and I won't have time to fix it.
+#### Disclaimer: everything in the repo was initially running  on minecraft 1.7.10. and OpenComputers 1.7.5. It may be that something would break or get deprecated/obsolete in newer versions and I won't have time to fix it.
 
 #### Disclaimer2: I'm not guarantee, that every issue you post would be implemented.
 
@@ -33,3 +33,13 @@ oppm install hellome
 ```
 
 and have a look, where this "hello" printing script is installed
+
+### Documentation ...Eventually
+
+So documentation is placed into man files for every package. It is available both here and also downloaded by oppm, so if inside minecraft, after installing package, run
+
+```bash
+man package_name
+```
+
+to see it. If you want to see documentation on package from GitHub - go to folder, named as package and open file without extention, for example [autocraft](/autocraft/autocraft)
