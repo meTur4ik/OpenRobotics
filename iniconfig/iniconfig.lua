@@ -8,7 +8,7 @@ local function initConfig()
     return {
         readFile = function()
             
-        end
+        end,
 
         readStringArray = function()
             parseString({}, {})
