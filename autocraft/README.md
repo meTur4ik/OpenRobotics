@@ -17,5 +17,15 @@ oppm install autocraft
 ```
 
 - Craft patterns assigned to ME Interfaces (could be of any complexity, just as standard AE2 )
-- Have those ME Interfaces connected to Molecular Assemblers and other mechanisms (depends on how much your crafts are perverted ^^), so they can craft. By the way, for some crafts you can use [BuildCraft](https://www.curseforge.com/minecraft/mc-mods/buildcraft/files) pipes to return items back from mechanisms if they cannot return on their own.
+- Have those ME Interfaces connected to Molecular Assemblers and other mechanisms (depends on how much your crafts are perverted ^^), so they can craft. By the way, for some crafts you can use [BuildCraft](https://www.curseforge.com/minecraft/mc-mods/buildcraft/files) pipes to return items back to Interfaces from mechanisms if they cannot return on their own.
 - Crafting storage. Capacity also depends on what are you trying to autocraft.
+
+### One more thing
+
+You can kind of improve user experience or do more automation (like scheduling), using `grep` and `less` utilities in pipe like 
+
+```bash
+autocraft | less
+```
+
+with this one.

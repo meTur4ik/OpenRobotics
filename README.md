@@ -20,7 +20,7 @@ Initially this repo is to contain some shapes for buildings done with robots. Wi
 
 ### Registering and Installing things
 
-To add this repo (while it is not in OpenComputers repo group and i think it won't be for undefined perion of time), type
+To add this repo (while it is not in OpenComputers repo group and i think it won't be for undefined period of time), type
 
 ```bash
 oppm register meTur4ik/OpenRobotics
