@@ -6,7 +6,7 @@ Standalone program for building domes. as for now i only implemented cube. Also 
 oppm install dome
 ``` 
 
-then copy it to floppy disk, insert into robot and run
+it would be downloaded to `/home` directory. Then copy it to floppy disk, insert into robot and run
 
 ### Hardware Requirements
 
