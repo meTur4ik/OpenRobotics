@@ -1,0 +1,38 @@
+NAME
+iniconfig - serialize and deserialize files of ini style
+
+USAGE
+local iniconfig = require('iniconfig')
+
+iniconfig.deserialize
+  Gets string array.
+  Returns table with config values.
+
+iniconfig.serialize
+  Gets table.
+  Returns string array of ini style.
+
+iniconfig.fromFile
+  Gets path to .ini file.
+  Returns table with config values.
+
+iniconfig.toFile
+  Gets table of format 
+  {
+    a = {
+        a = 1,
+        b = 2,
+        c = 3
+    },
+    b = {
+        a = val1,
+        bc = a.3.d,
+        someVariable = 192.168.1.1
+    }
+  }
+  Writes table to file of .ini style.
+
+NOTE
+Deserialization will ignore most symbols and is designed to work with letters from ascii.
+Deserialization with return values in string representation.
+When Serializing, make sure, every value has tostring() representation.
