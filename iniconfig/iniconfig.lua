@@ -3,8 +3,8 @@ function readStringArray(arr)
     local lastSection = nil
 
     function parseStr(str)
-        local key, value = str:match '^(%w+)%s*=%s*([%w./#*\\-]+)$' -- key=value
-        local section = str:match '^%[%s*(%w+)%s*%]$' -- [section]
+        local key, value = str:match '^(%a+%d*)%s*=%s*([^;]+);*$' -- key=value
+        local section = str:match '^%[%s*(%w+)%s*%];*$' -- [section]
 
         if section then
             o[section] = {}
@@ -68,3 +68,11 @@ return {
     ['toFile'] = toFile,
     ['fromFile'] = fromFile
 }
+
+--[[
+local s = {'[sec1]', 'f = bar-*./'}
+
+local o = readStringArray(s)
+
+print(o.sec1.f)
+]]
