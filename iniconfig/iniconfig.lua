@@ -68,11 +68,3 @@ return {
     ['toFile'] = toFile,
     ['fromFile'] = fromFile
 }
-
---[[
-local s = {'[sec1]', 'f = bar-*./'}
-
-local o = readStringArray(s)
-
-print(o.sec1.f)
-]]
