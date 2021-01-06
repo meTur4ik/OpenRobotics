@@ -34,7 +34,16 @@ function indexOf(list, arg)
     end
 end
 
+function contains(list, value)
+    for _, v in pairs(list) do
+        if v == value then return true end
+    end
+    return false
+end
+
 return {
     deepCopy = deepCopy,
-    setDiff = setDiff
+    setDiff = setDiff,
+    indexOf = indexOf,
+    contains = contains
 }
