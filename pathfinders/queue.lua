@@ -8,6 +8,15 @@ function Queue:new()
     return obj
 end
 
+function Queue:fromList(list)
+    local obj = { first = 0, last = -1}
+    setmetatable(obj, self)
+    for _, value in ipairs(list) do
+        obj:pushRight(value)
+    end
+    return obj
+end
+
 function Queue:pushLeft(value)
     local first = self.first - 1
     self.first = first

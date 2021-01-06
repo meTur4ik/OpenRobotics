@@ -5,14 +5,15 @@ function dfs(graph, start, visited)
     if visited == nil then
         visited = {}
     end
-    table.insert(visited, start)
-    
-    local g1 = util.setDiff(graph[start], visited)
+    visited[start] = true
+    local visitedArray = util.keysToSet(visited)
+    local g1 = util.setDiff(graph[start], visitedArray)
     
     for _, next in ipairs(g1) do
         dfs(graph, next, visited)
     end
-    return visited
+    local result = util.keysToSet(visited)
+    return result
 end
 
 return dfs

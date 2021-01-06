@@ -41,9 +41,18 @@ function contains(list, value)
     return false
 end
 
+function keysToSet(obj)
+    local result = {}
+    for key,_ in pairs(obj) do
+        table.insert(result, key)
+    end
+    return result
+end
+
 return {
     deepCopy = deepCopy,
     setDiff = setDiff,
     indexOf = indexOf,
-    contains = contains
+    contains = contains,
+    keysToSet = keysToSet
 }
