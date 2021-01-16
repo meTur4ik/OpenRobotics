@@ -1,4 +1,4 @@
-local redstone = require('component.redstone')
+local redstone = require('component').redstone
 local os = require('os')
 
 local rsSide = 0
@@ -9,3 +9,5 @@ function main()
     os.sleep(1)
     redstone.setOutput(rsSide, 0)
 end
+
+main()
