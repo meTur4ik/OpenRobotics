@@ -7,6 +7,8 @@ local rsSide = 0
 
 local invSide = 0
 
+local percentage = 90
+
 local rs = {
     rows = 6,
     columns = 9
@@ -48,7 +50,7 @@ function redstoneOff()
 end
 
 function damagePercentage(item)
-    return (item.maxDamage - item.damage) / item.maxDamage
+    return 100 * (item.maxDamage - item.damage) / item.maxDamage
 end
 
 -- damage percentage
@@ -84,6 +86,21 @@ end
 function main()
     local items = refreshItems()
     print(damagePercentage(linear2DRead(items, rs, 1, 2)))
+    if not anyLZHLowerThan(percentage) then
+        redstoneOn()
+        print('redstone is on')
+    end
+
+    while true do
+        os.sleep(1)
+        if anyLZHLowerThan(percentage) then
+            redstoneOff()
+            print('redstone is off')
+            break
+        end
+    end
+
+    redstoneOff()
 end
 
 main()
