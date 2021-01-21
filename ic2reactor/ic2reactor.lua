@@ -7,9 +7,9 @@ local rsSide = 0
 
 local invSide = 0
 
-local percentage = 90
+local percentage = 80
 
-local rs = {
+local arraySize = {
     rows = 6,
     columns = 9
 }
@@ -59,25 +59,32 @@ function anyLZHLowerThan(percent)
         error('percent should be between 0 and 100')
     end
 
+    local isLower = false
     local items = refreshItems()
-    for i=1, rs.rows do
-        local lzh1 = linear2DRead(items, rs, i, 2)
-        if damagePercentage(lzh1) < percent then
-            return true
+    for i=1, arraySize.rows do
+        
+        local lzh1 = linear2DRead(items, arraySize, i, 2)
+        local percent1 = damagePercentage(lzh1)
+        if percent1 < percent then
+            isLower = true
         end
-        print('lzh1', lzh1.name, lzh1.damage)
 
-        local lzh2 = linear2DRead(items, rs, i, 5)
-        if damagePercentage(lzh2) < percent then
-            return true
+        local lzh2 = linear2DRead(items, arraySize, i, 5)
+        local percent2 = damagePercentage(lzh2)
+        if percent2 < percent then
+            isLower = true
         end
-        print('lzh2', lzh2.name, lzh2.damage)
 
-        local lzh3 = linear2DRead(items, rs, i, 8)
-        if damagePercentage(lzh3) < percent then
+        local lzh3 = linear2DRead(items, arraySize, i, 8)
+        local percent3 = damagePercentage(lzh3)
+        if percent3 < percent then
+            isLower = true
+        end
+        print(string.format( "row %s:", i), percent1, percent2, percent3)
+
+        if isLower then
             return true
         end
-        print('lzh3', lzh3.name, lzh3.damage)
     end
 
     return false
@@ -85,7 +92,6 @@ end
 
 function main()
     local items = refreshItems()
-    print(damagePercentage(linear2DRead(items, rs, 1, 2)))
     if not anyLZHLowerThan(percentage) then
         redstoneOn()
         print('redstone is on')
