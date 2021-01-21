@@ -8,28 +8,28 @@ local rsSide = 0
 local invSide = 0
 
 local rs = {
-    columns = 9,
-    rows = 6
+    rows = 6,
+    columns = 9
 }
 
-function linear2DRead(arr2D, rowSize, i, j)
-    if i < 1 or i > rowSize.columns then
+function linear2DRead(arr2D, sizes, i, j)
+    if i < 1 or i > sizes.columns then
         error(string.format('index out of bounds, i = %s', i))
     end
-    if j < 1 or j > rowSize.rows then
+    if j < 1 or j > sizes.rows then
         error(string.format('index out of bounds, j = %s', j))
     end
-    return arr2D[(i - 1) * rowSize.columns + j]
+    return arr2D[(i - 1) * sizes.columns + j]
 end
 
-function linear2DWrite(arr2D, rowSize, i, j, value)
-    if i < 1 or i > rowSize.columns then
+function linear2DWrite(arr2D, sizes, i, j, value)
+    if i < 1 or i > sizes.columns then
         error(string.format('index out of bounds, i = %s', i))
     end
-    if j < 1 or j > rowSize.rows then
+    if j < 1 or j > sizes.rows then
         error(string.format('index out of bounds, j = %s', j))
     end
-    arr2D[(i - 1) * rowSize.columns + j] = value
+    arr2D[(i - 1) * sizes.columns + j] = value
 end
 
 function refreshItems()
@@ -39,16 +39,16 @@ end
 
 function main()
     local items = refreshItems()
-    for j=1,rs.rows do
-        local lzh1 = linear2DRead(items, rs, 2)
+    for i=1,rs.columns do
+        local lzh1 = linear2DRead(items, rs, i, 2)
         print('lzh1')
         print(lzh1.name, lzh1.damage)
 
-        local lzh2 = linear2DRead(items, rs, 5)
+        local lzh2 = linear2DRead(items, rs, i, 5)
         print('lzh2')
         print(lzh2.name, lzh2.damage)
-        
-        local lzh3 = linear2DRead(items, rs, 8)
+
+        local lzh3 = linear2DRead(items, rs, i, 8)
         print('lzh3')
         print(lzh3.name, lzh3.damage)
     end
