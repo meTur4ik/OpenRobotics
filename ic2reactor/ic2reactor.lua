@@ -13,21 +13,21 @@ local rs = {
 }
 
 function linear2DRead(arr2D, sizes, i, j)
-    if i < 1 or i > sizes.columns then
-        error(string.format('index out of bounds, i = %s', i))
+    if j < 1 or j > sizes.columns then
+        error(string.format('index out of bounds, i = %s', j))
     end
-    if j < 1 or j > sizes.rows then
-        error(string.format('index out of bounds, j = %s', j))
+    if i < 1 or i > sizes.rows then
+        error(string.format('index out of bounds, j = %s', i))
     end
     return arr2D[(i - 1) * sizes.columns + j]
 end
 
 function linear2DWrite(arr2D, sizes, i, j, value)
-    if i < 1 or i > sizes.columns then
-        error(string.format('index out of bounds, i = %s', i))
+    if j < 1 or j > sizes.columns then
+        error(string.format('index out of bounds, i = %s', j))
     end
-    if j < 1 or j > sizes.rows then
-        error(string.format('index out of bounds, j = %s', j))
+    if i < 1 or i > sizes.rows then
+        error(string.format('index out of bounds, j = %s', i))
     end
     arr2D[(i - 1) * sizes.columns + j] = value
 end
@@ -39,7 +39,7 @@ end
 
 function main()
     local items = refreshItems()
-    for i=1,rs.columns do
+    for i=1,rs.rows do
         local lzh1 = linear2DRead(items, rs, i, 2)
         print('lzh1')
         print(lzh1.name, lzh1.damage)
