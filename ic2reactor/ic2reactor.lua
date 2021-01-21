@@ -7,7 +7,7 @@ local rsSide = 0
 
 local invSide = 0
 
-local percentage = 80
+local percentage = 20
 
 local arraySize = {
     rows = 6,
@@ -61,8 +61,8 @@ function anyLZHLowerThan(percent)
 
     local isLower = false
     local items = refreshItems()
+    print('items state for current scan')
     for i=1, arraySize.rows do
-        
         local lzh1 = linear2DRead(items, arraySize, i, 2)
         local percent1 = damagePercentage(lzh1)
         if percent1 < percent then
@@ -80,7 +80,11 @@ function anyLZHLowerThan(percent)
         if percent3 < percent then
             isLower = true
         end
-        print(string.format( "row %s:", i), percent1, percent2, percent3)
+        print(string.format("row %s:", i),
+            string.format( "%s%%", percent1),
+            string.format( "%s%%", percent2),
+            string.format( "%s%%", percent3)
+        )
 
         if isLower then
             return true
