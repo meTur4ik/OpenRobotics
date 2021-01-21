@@ -12,6 +12,7 @@ local rs = {
     columns = 9
 }
 
+-- i is for row position, j is for column position
 function linear2DRead(arr2D, sizes, i, j)
     if j < 1 or j > sizes.columns then
         error(string.format('index out of bounds, i = %s', j))
@@ -22,6 +23,7 @@ function linear2DRead(arr2D, sizes, i, j)
     return arr2D[(i - 1) * sizes.columns + j]
 end
 
+-- i is for row position, j is for column position
 function linear2DWrite(arr2D, sizes, i, j, value)
     if j < 1 or j > sizes.columns then
         error(string.format('index out of bounds, i = %s', j))
@@ -37,21 +39,51 @@ function refreshItems()
     return items
 end
 
-function main()
+function redstoneOn()
+    redstone.setOutput(rsSide, 15)
+end
+
+function redstoneOff()
+    redstone.setOutput(rsSide, 0)
+end
+
+function damagePercentage(item)
+    return (item.maxDamage - item.damage) / item.maxDamage
+end
+
+-- damage percentage
+function anyLZHLowerThan(percent)
+    if percent > 100 or percent < 0 then
+        error('percent should be between 0 and 100')
+    end
+
     local items = refreshItems()
-    for i=1,rs.rows do
+    for i=1, rs.rows do
         local lzh1 = linear2DRead(items, rs, i, 2)
-        print('lzh1')
-        print(lzh1.name, lzh1.damage)
+        if damagePercentage(lzh1) < percent then
+            return true
+        end
+        print('lzh1', lzh1.name, lzh1.damage)
 
         local lzh2 = linear2DRead(items, rs, i, 5)
-        print('lzh2')
-        print(lzh2.name, lzh2.damage)
+        if damagePercentage(lzh2) < percent then
+            return true
+        end
+        print('lzh2', lzh2.name, lzh2.damage)
 
         local lzh3 = linear2DRead(items, rs, i, 8)
-        print('lzh3')
-        print(lzh3.name, lzh3.damage)
+        if damagePercentage(lzh3) < percent then
+            return true
+        end
+        print('lzh3', lzh3.name, lzh3.damage)
     end
+
+    return false
+end
+
+function main()
+    local items = refreshItems()
+    print(damagePercentage(linear2DRead(items, rs, 1, 2)))
 end
 
 main()
