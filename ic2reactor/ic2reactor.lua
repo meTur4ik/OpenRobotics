@@ -1,6 +1,7 @@
 local redstone = require('component').redstone
 local inventory = require('component').inventory_controller
 local os = require('os')
+local csv = require('csvlib')
 
 -- 0 side is down
 local rsSide = 0
