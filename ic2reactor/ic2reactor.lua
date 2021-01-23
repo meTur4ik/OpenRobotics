@@ -95,7 +95,24 @@ function anyLZHLowerThan(percent)
     return false
 end
 
+function readFromFile(filename)
+    local file = io.open(filename, 'r')
+    local strs = {}
+    repeat
+        local str = file:read()
+        if str then
+            table.insert(strs, str)
+        end
+    until not str
+    file:close()
+    local obj = csv.readStringArray(strs)
+    return obj
+end
+
 function main()
+    local reactorConfig = readFromFile('/home/schemas/19kmox.csv')
+    print(reactorConfig[1][1])
+    print(reactorConfig[1][2])
     local items = refreshItems()
     if not anyLZHLowerThan(percentage) then
         redstoneOn()
