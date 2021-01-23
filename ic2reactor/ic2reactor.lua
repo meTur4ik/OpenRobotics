@@ -110,9 +110,9 @@ function readFromFile(filename)
 end
 
 function main()
-    local reactorConfig = readFromFile('/home/schemas/19kmox.csv')
-    print(reactorConfig[1][1])
-    print(reactorConfig[1][2])
+    -- local reactorConfig = readFromFile('/home/schemas/19kmox.csv')
+    -- print(reactorConfig[1][1])
+    -- print(reactorConfig[1][2])
     local items = refreshItems()
     if not anyLZHLowerThan(percentage) then
         redstoneOn()
