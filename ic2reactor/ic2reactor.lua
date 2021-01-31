@@ -2,6 +2,7 @@ local redstone = require('component').redstone
 local inventory = require('component').inventory_controller
 local os = require('os')
 local csv = require('csvlib')
+local fs = require('filesystem')
 
 -- 0 side is down
 local rsSide = 0
@@ -96,7 +97,7 @@ function anyLZHLowerThan(percent)
 end
 
 function readFromFile(filename)
-    local file = io.open(filename, 'r')
+    local file = fs.open(filename, 'r')
     local strs = {}
     repeat
         local str = file:read()
