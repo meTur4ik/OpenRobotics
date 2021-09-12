@@ -28,12 +28,14 @@ function writeStringArray(array)
     return stringArray
 end
 
-function readStringArray(stringArray)
+function readStringArray(stringEnumerable)
     local array = {}
-    for index, row in ipairs(stringArray) do
+    index = 1
+    for row in stringEnumerable do
         array[index] = {}
         local values = split(row, ',')
         array[index] = values
+        index = index + 1
     end
     return array
 end
@@ -47,7 +49,7 @@ end
 function writeFile(filePath, array)
     local lines = writeStringArray(array)
     local file = io.open(filePath, "w")
-    local ran, errorMessage = pcall(file, lines)
+    local ran, errorMessage = pcall(writeLines, file, lines)
     file:close()
 
     if not ran then
