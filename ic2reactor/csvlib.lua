@@ -1,3 +1,6 @@
+
+
+
 function split(str, delimiter)
     local result = { }
     local from  = 1
@@ -35,8 +38,34 @@ function readStringArray(stringArray)
     return array
 end
 
+function readFile(filePath)
+    local lines = io.lines(filePath)
+    local array = readStringArray(lines)
+    return array
+end
+
+function writeFile(filePath, array)
+    local lines = writeStringArray(array)
+    local file = io.open(filePath, "w")
+    local ran, errorMessage = pcall(file, lines)
+    file:close()
+
+    if not ran then
+        error('cannot write file\n' .. errorMessage)
+    end
+end
+
+function writeLines(file, lines)
+    for line in lines do
+        file:write(line)
+        file:write('\n')
+    end
+end
+
 return {
     readStringArray = readStringArray,
     writeStringArray = writeStringArray,
-    split = split
+    split = split,
+    readFile = readFile,
+    writeFile = writeFile
 }
