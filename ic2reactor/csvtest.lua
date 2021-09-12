@@ -21,8 +21,8 @@ function main(...)
     end
 
     local config = csv.readFile(opts['schema'])
-    for i = 1, 10, 1 do
-        for j = 1, 10, 1 do
+    for i = 1, #config, 1 do
+        for j = 1, #config[1], 1 do
             print(config[i][j])
         end
     end
