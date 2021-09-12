@@ -13,6 +13,10 @@ function main(...)
         print(k, v)
     end
 
+    if not opts['schema'] then
+        error('no schema. use --schema=/path/to/schema parameter')
+    end
+
 end
 
 main(...)
