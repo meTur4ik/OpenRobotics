@@ -63,9 +63,9 @@ function writeLines(file, lines)
 end
 
 return {
-    readStringArray = readStringArray,
-    writeStringArray = writeStringArray,
-    split = split,
-    readFile = readFile,
-    writeFile = writeFile
+    ['readStringArray'] = readStringArray,
+    ['writeStringArray'] = writeStringArray,
+    ['split'] = split,
+    ['readFile'] = readFile,
+    ['writeFile'] = writeFile
 }
